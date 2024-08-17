@@ -32,8 +32,8 @@ function Auth() {
         setIsSent(false);
     };
 
-    const sendRequest = (path) => {
-        fetch("/auth/" + path, {
+    const sendRequest = async (path) => {
+        await fetch("/auth/" + path, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -45,7 +45,8 @@ function Auth() {
         })
             .then((res) => res.json())
             .then((result) => {
-                localStorage.setItem("tokenKey", result.message);
+                localStorage.setItem("tokenKey", result.accessToken);
+                localStorage.setItem("refreshKey", result.refreshToken);
                 localStorage.setItem("currentUser", result.userId);
                 localStorage.setItem("userName", username);
                 navigate("/")

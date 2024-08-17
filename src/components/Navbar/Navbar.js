@@ -13,8 +13,9 @@ function Navbar() {
 
     const navigate = useNavigate();
 
-    const onClick = () => {
+    const onClickLogout = () => {
         localStorage.removeItem("tokenKey");
+        localStorage.removeItem("refreshKey");
         localStorage.removeItem("currentUser");
         localStorage.removeItem("userName");
         navigate("/auth")
@@ -55,7 +56,7 @@ function Navbar() {
                             }} to={{ pathname: '/auth' }}>Login/Register</Link>
                                 :
                                 <div>
-                                    <IconButton onClick={onClick}><LogoutIcon></LogoutIcon></IconButton>
+                                    <IconButton onClick={onClickLogout}><LogoutIcon></LogoutIcon></IconButton>
                                     <Link style={{
                                         textDecoration: "none",
                                         boxShadow: "none",

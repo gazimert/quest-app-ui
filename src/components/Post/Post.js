@@ -69,7 +69,9 @@ function Post(props) {
     }
 
     const refreshComments = () => {
-        fetch("/comments?postId=" + postId)
+        fetch("/comments?postId=" + postId, {
+            method: "GET"
+        })
             .then(res => res.json())
             .then(
                 (result) => {
